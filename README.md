@@ -87,4 +87,3 @@ Certain discount levels lead to negative profit
 Monthly trends show fluctuations across different years
 
 Visualization helps in quick and clear business analysis
-
