@@ -1,0 +1,31 @@
+# Importing the Libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Pivot table for profit
+profit_pivot = pd.pivot_table(
+    df,
+    values='profit',
+    index='product_category',
+    columns='region',
+    aggfunc='sum'
+)
+
+# Plot heatmap
+plt.figure(figsize=(10, 6))
+
+sns.heatmap(
+    profit_pivot,
+    annot=True,
+    fmt=".0f",
+    cmap="RdYlGn",
+    linewidths=0.5
+)
+
+plt.title("Profit Contribution Heatmap (Category vs Region)", fontsize=14)
+plt.xlabel("Region")
+plt.ylabel("Category")
+
+plt.tight_layout()
+plt.show()
