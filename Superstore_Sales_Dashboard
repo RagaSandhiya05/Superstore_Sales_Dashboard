@@ -1,0 +1,102 @@
+# Importing the Libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load dataset 
+file_path = "/content/Superstore Sales.xls"
+df = pd.read_excel(file_path, sheet_name="Orders")
+
+# Clean column names 
+df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
+
+# Date features
+df['order_date'] = pd.to_datetime(df['order_date'])
+df['year'] = df['order_date'].dt.year
+df['month'] = df['order_date'].dt.month
+
+# KPI calculations
+total_sales = df['sales'].sum()
+total_profit = df['profit'].sum()
+total_orders = df['order_id'].nunique()
+avg_discount = df['discount'].mean()
+
+# Create dashboard canvas 
+fig = plt.figure(figsize=(20, 14))
+gs = fig.add_gridspec(3, 4)
+
+# KPI Section
+ax_kpi = fig.add_subplot(gs[0, :])
+ax_kpi.axis('off')
+
+kpi_box = dict(boxstyle="round,pad=0.4", fc="Yellow", ec="black")
+
+ax_kpi.text(0.1, 0.6, f"Total Sales\n${total_sales:,.0f}",
+            fontsize=16, ha='center', bbox=kpi_box)
+ax_kpi.text(0.35, 0.6, f"Total Profit\n${total_profit:,.0f}",
+            fontsize=16, ha='center', bbox=kpi_box)
+ax_kpi.text(0.6, 0.6, f"Total Orders\n{total_orders}",
+            fontsize=16, ha='center', bbox=kpi_box)
+ax_kpi.text(0.85, 0.6, f"Avg Discount\n{avg_discount:.2f}",
+            fontsize=16, ha='center', bbox=kpi_box)
+
+ax_kpi.set_title("SUPERSTORE SALES DASHBOARD",
+                 fontsize=22, fontweight='bold')
+
+# Sales by Category 
+ax1 = fig.add_subplot(gs[1, 0])
+df.groupby('product_category')['sales'].sum().plot(
+    kind='bar', ax=ax1, color=['Blue', 'Green', 'Yellow']
+)
+ax1.set_title("Sales by Category")
+ax1.set_ylabel("Sales")
+ax1.grid(axis='y', linestyle='--', alpha=0.4)
+
+# Profit by Category 
+ax2 = fig.add_subplot(gs[1, 1])
+df.groupby('product_category')['profit'].sum().plot(
+    kind='bar', ax=ax2, color=['Pink', 'Violet', 'Orange']
+)
+ax2.set_title("Profit by Category")
+ax2.grid(axis='y', linestyle='--', alpha=0.4)
+
+# Top 10 Sub-Categories
+ax3 = fig.add_subplot(gs[1, 2:])
+df.groupby('product_sub-category')['sales'].sum() \
+  .sort_values(ascending=False).head(10) \
+  .plot(kind='barh', ax=ax3, color='Blue')
+ax3.set_title("Top 10 Sub-Categories by Sales")
+ax3.invert_yaxis()
+ax3.grid(axis='x', linestyle='--', alpha=0.4)
+
+# Monthly Sales Trend
+ax4 = fig.add_subplot(gs[2, :2])
+monthly_sales = df.groupby(['year', 'month'])['sales'].sum().reset_index()
+
+for y in monthly_sales['year'].unique():
+    temp = monthly_sales[monthly_sales['year'] == y]
+    ax4.plot(temp['month'], temp['sales'], marker='o', label=str(y))
+
+ax4.set_title("Monthly Sales Trend")
+ax4.set_xlabel("Month")
+ax4.set_ylabel("Sales")
+ax4.legend()
+ax4.grid(True, linestyle='--', alpha=0.4)
+
+# Discount vs Profit 
+ax5 = fig.add_subplot(gs[2, 2:])
+scatter = ax5.scatter(
+    df['discount'],
+    df['profit'],
+    c=df['profit'],
+    cmap='coolwarm',
+    alpha=0.7
+)
+ax5.axhline(0, linestyle='--', color='black')
+ax5.set_title("Discount vs Profit")
+ax5.set_xlabel("Discount")
+ax5.set_ylabel("Profit")
+fig.colorbar(scatter, ax=ax5, label="Profit Level")
+
+# Final Layout
+plt.tight_layout()
+plt.show()
