@@ -1,90 +1,125 @@
-📊 Superstore Sales Dashboard & Profit Heatmap
+# 📊 Superstore Sales Analysis Dashboard
 
-📌 Project Overview
+## 📌 Project Overview
 
-Created a data visualization dashboard using the Superstore Sales Dataset
+This project performs Exploratory Data Analysis (EDA) on Superstore sales data to uncover business insights related to sales, profit, discounts, product categories, and regional performance.
 
-The dashboard provides insights into sales performance and profit contribution
+Using Python, Pandas, Matplotlib, and Seaborn, the project visualizes key performance indicators and builds an interactive-style dashboard to support data-driven decision-making.
 
-A heatmap-style visualization is used to analyze how profit varies with discounts
 
-🎯 Project Objectives
+## 🎯 Objectives
 
-Visualize overall sales and profit
+* Analyze overall sales and profit performance.
+* Identify top-performing product categories and sub-categories.
+* Examine monthly sales and profit trends.
+* Understand the impact of discounts on sales and profitability.
+* Compare regional performance using heatmaps.
+* Create a business dashboard for quick insights.
 
-Analyze sales and profit by product category
 
-Identify top sub-categories by sales
+## 🛠️ Technologies Used
 
-Observe monthly sales trends
+* Python
+* Pandas
+* Matplotlib
+* Seaborn
+* Jupyter Notebook / Google Colab
 
-Understand the impact of discounts on profit
 
-📊 Key Metrics Displayed
+## 📂 Dataset Features
 
-Total Sales: $14,915,601
+The dataset contains:
 
-Total Profit: $1,521,768
+* Order Details
+* Customer Information
+* Product Categories
+* Sales
+* Profit
+* Discount
+* Shipping Information
+* Region & Province Data
 
-Total Orders: 5,496
 
-Average Discount: 0.05
+## 📈 Analysis Performed
 
-📈 Visualizations Included
-1. Sales by Category
+### 1. Sales vs Profit Analysis
 
-Displays total sales for:
+* Compared overall sales and profit.
+* Identified business profitability.
 
-Furniture
+### 2. Product Category Analysis
 
-Office Supplies
+* Sales by Product Category.
+* Profit by Product Category.
 
-Technology
+### 3. Top Performing Products
 
-2. Profit by Category
+* Top 10 Sub-Categories by Sales.
+* Top 10 Sub-Categories by Profit.
 
-Compares profit contribution across product categories
+### 4. Trend Analysis
 
-3. Top 10 Sub-Categories by Sales
+* Monthly Sales Trend.
+* Monthly Profit Trend.
 
-Shows the highest revenue-generating sub-categories
+### 5. Discount Impact Analysis
 
-Helps identify key products driving sales
+* Discount vs Sales Scatter Plot.
+* Discount vs Profit Scatter Plot.
 
-4. Monthly Sales Trend
+### 6. Regional Performance
 
-Line chart representing monthly sales over multiple years
+* Profit Contribution Heatmap.
+* Category-wise regional comparison.
 
-Helps identify trends and seasonal patterns
+### 7. Business Dashboard
 
-5. Discount vs Profit (Heatmap-Style Visualization)
+A consolidated dashboard displaying:
 
-Scatter plot showing discount values against profit
+* Total Sales
+* Total Profit
+* Total Orders
+* Average Discount
+* Sales Trends
+* Profit Trends
+* Category Performance
 
-Color intensity represents profit contribution
 
-Highlights:
+## 📊 Key Insights
 
-High-profit zones
+✔ Technology and Office Supplies contribute significantly to sales.
 
-Loss-making discount levels
+✔ Certain sub-categories generate high sales but lower profits.
 
-🛠 Tools & Technologies Used
+✔ Higher discounts do not always result in higher profitability.
 
-Programming Language: Python
+✔ Sales show seasonal fluctuations across months.
 
-Libraries:
+✔ Regional performance varies significantly across product categories.
 
-Pandas
 
-Matplotlib
+## 📸 Sample Visualizations
 
-💡 Key Takeaways
+* Sales vs Profit Comparison
+* Monthly Sales Trend
+* Monthly Profit Trend
+* Top 10 Sub-Categories by Sales
+* Top 10 Sub-Categories by Profit
+* Discount vs Profit Analysis
+* Profit Heatmap
+* Business Dashboard
 
-Technology category contributes the highest sales and profit
 
-Certain discount levels lead to negative profit
+## 📚 Learning Outcomes
 
-Monthly trends show fluctuations across different years
+* Data Cleaning and Preprocessing
+* Exploratory Data Analysis (EDA)
+* Business Intelligence Concepts
+* Data Visualization Techniques
+* Dashboard Design
+* Insight Extraction from Real-World Data
 
-Visualization helps in quick and clear business analysis
+
+## 👩‍💻 Author
+
+**Raga Sandhiya R**
